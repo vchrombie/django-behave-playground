@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "shopping-cart"
+version = "0.1.0"
+description = ""
+authors = ["Venu Vardhan Reddy Tekula <venuvardhanreddytekula8@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "3.2.5"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+makemigrations = "scripts:makemigrations"
+migrate = "scripts:migrate"
+server = "scripts:server"
+shell = "scripts:shell"
+tests = "scripts:tests"
+createsuperuser = "scripts:createsuperuser"
