@@ -19,7 +19,7 @@ class CartViewSet(viewsets.ModelViewSet):
     @action(
         methods=['GET', ],
         detail=False,
-        url_path='checkout/<user_id>/',
+        url_path='checkout/(?P<user_id>[^/.]+)',
         url_name='checkout'
     )
     def checkout(self, request, *args, **kwargs):

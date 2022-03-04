@@ -53,7 +53,7 @@ class CartHelper:
         self.coupon_discount_amount = 0
 
     def prepare_cart_checkout(self):
-        self.cart_items = Cart.objects.get(user=self.user)
+        self.cart_items = Cart.objects.filter(user=self.user)
 
         if not self.cart_items:
             return False
