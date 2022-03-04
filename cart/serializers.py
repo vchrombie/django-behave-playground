@@ -6,7 +6,7 @@ from .models import User, Cart, DeliveryCost
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'name', 'created_at', 'updated_at', ]
+        fields = ['id', 'username', 'created_at', 'updated_at', ]
 
 
 class CartSerializer(serializers.ModelSerializer):

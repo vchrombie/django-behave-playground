@@ -1,20 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 from products.models import Product
 
 
-class User(models.Model):
-    username = models.CharField(max_length=255, null=False, verbose_name='Username', )
+class User(AbstractUser):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at', )
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Updated at', )
-
-    def __str__(self):
-        return "{}".format(
-            self.username,
-        )
-
-    class Meta:
-        verbose_name_plural = 'Users'
 
 
 class Cart(models.Model):

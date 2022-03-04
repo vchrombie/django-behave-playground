@@ -13,10 +13,10 @@ $ poetry shell
 ```
 
 Django project setup
-```
+```bash
 (.venv) $ makemigrations
 (.venv) $ migrate
-(.venv) $ createsuperuser
+(.venv) $ createsuperuser # admin:admin
 (.venv) $ python manage.py loaddata shopping_cart/fixtures/data.json
 (.venv) $ server
 ```
