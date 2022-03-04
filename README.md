@@ -1,5 +1,7 @@
 # shopping-cart
 
+### Setup
+
 Clone the repo
 ```bash
 $ git clone https://github.com/vchrombie/django-behave-playground/
@@ -28,4 +30,23 @@ You can see the django application would be running at the respective port (defa
 
 You can [import the collection and environment on Postman](https://testfully.io/blog/import-from-postman/) to test the application right away. The JSON configurations are in the [postman](postman) directory.
 
+
+### Screenshots
+
+admin panel
+![admin](screenshots/admin.png)
+
+swagger
+![swagger](screenshots/swagger.png)
+
+product list
+![product list](screenshots/product-list.png)
+
+product detail
+![product detail](screenshots/product-detail.png)
+
+postman
 ![postman](screenshots/postman.png)
+
+cart checkout
+![cart checkout](screenshots/cart-checkout.png)
