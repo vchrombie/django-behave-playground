@@ -1,6 +1,3 @@
-from rest_framework.response import Response
-from rest_framework import status
-
 from .models import Cart, DeliveryCost
 
 from discounts.helpers import CampaignHelper, CouponHelper
@@ -102,7 +99,6 @@ class CartHelper:
 
         for discount in self.discounts.get('coupons', []):
             self.coupon_discount_amount = (self.cart_base_total_amount * discount.amount.get('rate')) / 100
-
 
     def get_total_amount_after_discount(self):
 

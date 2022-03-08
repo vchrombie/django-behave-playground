@@ -1,8 +1,6 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 
-from decimal import Decimal
-
 from .models import User, Cart, DeliveryCost
 from products.models import Category, Product
 from discounts.models import Campaign, Coupon
