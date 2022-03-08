@@ -33,7 +33,7 @@ class CampaignHelper:
     def get_category_discounts(self, cart_item):
         campaigns = Campaign.objects.filter(
             apply_to='Category',
-            target_product__in=[
+            target_category__in=[
                 cart_item.item.category_id,
                 cart_item.item.category.parent_category_id
             ],

@@ -27,7 +27,7 @@ class CartViewSet(viewsets.ModelViewSet):
             user = User.objects.get(pk=int(kwargs.get('user_id')))
         except Exception as e:
             return Response(
-                data={'Error': 'User not found\n' + str(e)},
+                data={'Error': 'User not found. \n' + str(e)},
                 status=status.HTTP_404_NOT_FOUND,
             )
 
@@ -36,7 +36,8 @@ class CartViewSet(viewsets.ModelViewSet):
 
         if not checkout_details:
             return Response(
-                data={'Error': 'Cart of the User is empty\n'}
+                data={'Error': 'Cart of the User is empty\n'},
+                status=status.HTTP_404_NOT_FOUND,
             )
         return Response(
             data={'checkout_details': checkout_details}

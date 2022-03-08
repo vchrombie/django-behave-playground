@@ -1,3 +1,6 @@
+from rest_framework.response import Response
+from rest_framework import status
+
 from .models import Cart, DeliveryCost
 
 from discounts.helpers import CampaignHelper, CouponHelper
@@ -27,8 +30,9 @@ class DeliveryCostHelper:
                             (self.calculator.cost_per_product * self.num_of_products) + self.calculator.fixed_cost
 
             return self.cost
+
         except Exception as e:
-            print('Error when trying to calculate cost', str(e))
+            print('Error when trying to calculate cost\n', str(e))
             return False
 
 
@@ -87,21 +91,18 @@ class CartHelper:
         self.discounts['coupons'] = coupon_helper.get_coupon_discount()
 
     def calculate_discount_amounts(self):
-        try:
-            for discount in self.discounts.get('campaigns', []):
+        for discount in self.discounts.get('campaigns', []):
 
-                if discount.discount_type == 'Amount':
-                    self.campaign_discount_amounts.append(discount.amount.get('amount'))
-                if discount.discount_type == 'Rate':
-                    self.campaign_discount_amounts.append((
-                        self.cart_base_total_amount * discount.amount.get('rate')
-                    ) / 100)
+            if discount.discount_type == 'Amount':
+                self.campaign_discount_amounts.append(discount.amount.get('amount'))
+            if discount.discount_type == 'Rate':
+                self.campaign_discount_amounts.append((
+                    self.cart_base_total_amount * discount.amount.get('rate')
+                ) / 100)
 
-            for discount in self.discounts.get('coupons', []):
-                self.coupon_discount_amount = (self.cart_base_total_amount * discount.amount.get('rate')) / 100
+        for discount in self.discounts.get('coupons', []):
+            self.coupon_discount_amount = (self.cart_base_total_amount * discount.amount.get('rate')) / 100
 
-        except Exception as e:
-            print('Error when trying to calculate discount amounts', str(e))
 
     def get_total_amount_after_discount(self):
 

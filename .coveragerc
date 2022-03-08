@@ -1,0 +1,7 @@
+[run]
+omit =
+    manage.py
+    shopping_cart/*
+    scripts.py
+    */migrations/*
+    */__init__.py
