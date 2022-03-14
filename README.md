@@ -35,8 +35,8 @@ You can [import the collection and environment on Postman](https://testfully.io/
 #### Unit Tests
 
 coverage is configured with the project, you can check the coverage using the following command
-```
-$ coverage run --source='.' manage.py test
+```bash
+(.venv) $ coverage run --source='.' manage.py test
 Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
 ..................
@@ -46,8 +46,8 @@ Ran 18 tests in 0.150s
 OK
 Destroying test database for alias 'default'...
 ```
-```
-$ coverage report -m
+```bash
+(.venv) $ coverage report -m
 Name                       Stmts   Miss  Cover   Missing
 --------------------------------------------------------
 cart/admin.py                  6      0   100%
@@ -81,9 +81,51 @@ TOTAL                        487      0   100%
 #### Lint
 
 flake8 is configured with the project, you can run the lint check using the following command
-```
-$ flake8
+```bash
+(.venv) $ flake8
 
+```
+
+#### Behave Tests
+
+We test the Behavioural features using Behave and with some other tools like selenium.
+
+##### Prerequisites
+
+You need the geckodriver for selenium to work with firefox. Download the suitable version of [geckodriver](https://github.com/mozilla/geckodriver/releases).
+
+Extract the executable and move it to the `/bin` folder of the virtual environment
+```
+$ tar xzvf geckodriver-v0.30.0-linux64.tar.gz
+$ mv geckodriver django-behave-playground/.venv/bin
+```
+
+You also need to install this for avoiding errors while using the `Pattern` python library
+```bash
+(.venv) $ python -m nltk.downloader -d .venv/nltk_data omw-1.4
+```
+
+##### Run Behave Tests
+
+behave-django is configured with the project, you can run using the behave tests using the following command
+```bash
+(.venv) $ python manage.py behave
+Creating test database for alias 'default'...
+Feature: django-admin can perform actions # features/django-admin.feature:2
+  Tests to check if the django admin can perform basic
+  functions of the shopping-cart.
+  Scenario: django-admin can add categories in the cart                # features/django-admin.feature:6
+    Given I am in the Django Admin                                     # features/steps/django-admin.py:8 0.662s
+    When I click on the "Categories" link                              # features/steps/django-admin.py:25 1.628s
+    Then I am on the "Categories" page                                 # features/steps/django-admin.py:30 0.002s
+    Then I will click on the "ADD CATEGORY" button                     # features/steps/django-admin.py:36 0.524s
+    Then I add data for a new Category item and click on "Save" button # features/steps/django-admin.py:46 0.189s
+
+1 feature passed, 0 failed, 0 skipped
+1 scenario passed, 0 failed, 0 skipped
+5 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m3.006s
+Destroying test database for alias 'default'...
 ```
 
 ### Screenshots
