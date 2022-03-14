@@ -4,8 +4,8 @@
 
 Clone the repo
 ```bash
-$ git clone https://github.com/vchrombie/django-behave-playground/
-$ cd django-behave-playground
+$ git clone https://github.com/vchrombie/django-playground/
+$ cd django-playground
 ```
 
 Install the project
@@ -97,7 +97,7 @@ You need the geckodriver for selenium to work with firefox. Download the suitabl
 Extract the executable and move it to the `/bin` folder of the virtual environment
 ```
 $ tar xzvf geckodriver-v0.30.0-linux64.tar.gz
-$ mv geckodriver django-behave-playground/.venv/bin
+$ mv geckodriver django-playground/.venv/bin
 ```
 
 You also need to install this for avoiding errors while using the `Pattern` python library
